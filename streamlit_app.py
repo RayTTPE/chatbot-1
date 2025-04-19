@@ -80,7 +80,7 @@ def about_ray_dream():
 def chatwithRay():
     st.title("แชทกับเรา")
     st.write("ยินดีต้อนรับสู่แชทบอทของเรา! คุณสามารถถามคำถามหรือขอความช่วยเหลือ")
-    st.title("AI Chatbot for API Debugging")
+    st.title("แชท💬")
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
