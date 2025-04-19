@@ -12,28 +12,30 @@ model = "qwen2.5:14b"
 
 def about_ray_dream():
     st.markdown(
-        """
-        <style>
-            .hero-title {
-                font-size: 3rem;
-                color: #FFC0CB;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            }
-            .hero-text {
-                font-size: 1.2rem;
-                line-height: 1.6;
-                color: #FFC0CB;
-            }
-            .sidebar-text {
-                font-size: 0.9rem;
-                color: #FFFFFF;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    """
+    <style>
+        .hero-title {
+            font-size: 3rem;
+            color: #FFC0CB;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #FFC0CB;
+        }
+        .sidebar-text {
+            font-size: 0.9rem;
+            color: #FFFFFF;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-    col1, col2 = st.columns(2, gap="small")
+    col1, col2 = st.columns(2, gap="small", vertical_alignment="center")
+    with col1:
+        st.image("./รูป/Love.jpg", width=300)  # เพิ่มขนาดภาพให้โดดเด่น
 
     with col2:
         st.markdown('<h1 class="hero-title">Dream & Ray</h1>', unsafe_allow_html=True)
@@ -45,8 +47,10 @@ def about_ray_dream():
             '</p>',
             unsafe_allow_html=True,
         )
+        if st.button("✉️ ติดต่อเรา"):
+            show_contact_form()
 
-    st.write("\n")
+    st.write("\n")  # เพิ่มระยะห่างเพื่อไม่ให้หน้าดูอึดอัด
     st.subheader("ข้อมูลของพวกเรา", anchor=False)
     st.write(
         """
@@ -57,7 +61,7 @@ def about_ray_dream():
         """
     )
 
-    st.write("\n")
+    st.write("\n")  # เพิ่มระยะห่าง
     st.subheader("เรื่องราวของเรา", anchor=False)
     st.write(
         """
@@ -68,6 +72,7 @@ def about_ray_dream():
         """
     )
 
+    # --- FOOTER ---
     st.write("\n")
     st.markdown(
         """
@@ -78,9 +83,8 @@ def about_ray_dream():
     )
 
 def chatwithRay():
-    st.title("แชทกับเรา")
-    st.write("ยินดีต้อนรับสู่แชทบอทของเรา! คุณสามารถถามคำถามหรือขอความช่วยเหลือ")
-    st.title("แชท💬")
+    st.write("ยินดีต้อนรับสู่แชทบอทของเรา! คุณสามารถถามคำถามหรือขอความช่วยเหลือจากเราได้✨")
+    st.title("แชทกับเรา💬")
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -140,17 +144,18 @@ def chat(messages):
 
 # --- MAIN FUNCTION ---
 def main():
-    st.sidebar.title("เมนูนำทาง")
+    st.sidebar.title("D&R❤️")
 
     pages = {
         "About Ray & Dream": about_ray_dream, 
         "แชทกับเรา": chatwithRay,
     }
 
-    selected_page = st.sidebar.radio("เลือกหน้า", list(pages.keys()))
+    selected_page = st.sidebar.radio("เมนูนำทาง", list(pages.keys()))
 
     # Run selected page function
     pages[selected_page]()
+st.sidebar.image("รูป/DR.jpg", width=150)
 
 if __name__ == "__main__":
     main()
